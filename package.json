@@ -5,11 +5,10 @@
   "main": "server.js",
   "scripts": {
     "install-server": "cd backend && npm install",
-"start-server": "cd backend && node server.js",
+"start-server": "cd backend && nodemon backend/server.js",
 "install-client": "cd groupchat && npm install",
-"build-client": "cd groupchat && npm run build",
-"start-client": "cd groupchat && npm run start",
-    "start": "nodemon backend/server.js"
+"build-client": "cd groupchat && npm run build"
+
   },
   "author": "Adity Kumar",
   "license": "ISC",
