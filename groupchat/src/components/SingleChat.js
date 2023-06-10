@@ -18,7 +18,7 @@ import ScrollableChat from "./ScrollableChat";
 import io from "socket.io-client";
 import Lottie from "react-lottie";
 import animationData from "..//animation/loading.json";
-const ENDPOINT = "https://chatapp-loh5.onrender.com/";
+const ENDPOINT = "https://chatapp-loh5.onrender.com";
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
@@ -86,7 +86,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         };
 
         const { data } = await axios.post(
-          "/api/message",
+          `$/api/message`,
           {
             content: newMessage,
             chatId: selectedChat._id,

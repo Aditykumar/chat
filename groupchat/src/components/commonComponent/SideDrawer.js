@@ -30,7 +30,6 @@ import axios from "axios";
 import ChatLoading from "../ChatLoading";
 import UserListItem from "../UserAvatar/UserListItem";
 import { getSender } from "../../config/ChatLogic";
-
 const SideDrawer = () => {
   const [search, setSearch] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
@@ -86,7 +85,7 @@ const accessChat=async (userId)=>{
             },
         };
 
-        const {data}=await axios.post("/api/chat",{userId},config);
+        const {data}=await axios.post(`/api/chat`,{userId},config);
        
        if (!chats.find((c)=>c._id===data._id)) setChats([data,...chats])
         setSelectedChat(data)
