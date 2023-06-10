@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "install-server": "cd backend && npm install",
-    "start-server": "cd backend && node backend/server.js",
+    "start-server": "cd backend && node server.js",
     "install-client": "cd groupchat && npm install",
     "build-client": "cd groupchat && npm run build",
     "start": "nodemon backend/server.js"
