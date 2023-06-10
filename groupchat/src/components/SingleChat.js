@@ -18,7 +18,7 @@ import ScrollableChat from "./ScrollableChat";
 import io from "socket.io-client";
 import Lottie from "react-lottie";
 import animationData from "..//animation/loading.json";
-const ENDPOINT = "http://localhost:5000";
+const ENDPOINT = "https://chat-pbrzuj4qk-aditykumar.vercel.app/";
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
