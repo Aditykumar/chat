@@ -106,7 +106,7 @@ const Signup = () => {
         },
       };
       const { data } = await axios.post(
-        `/api/user`,
+        `https://chatapp-loh5.onrender.com/api/user`,
         { name, email, password, pic },
         config
       );

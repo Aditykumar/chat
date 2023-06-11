@@ -40,7 +40,7 @@ const GroupChatModal = ({ children }) => {
         },
       };
 
-      const { data } = await axios.get(`/api/user?search=${search}`, config);
+      const { data } = await axios.get(`https://chatapp-loh5.onrender.com/api/user?search=${search}`, config);
       setLoading(false);
       setSearchResult(data);
     } catch (error) {
@@ -71,7 +71,7 @@ try {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const {data}=await axios.post(`/api/chat/group`,{
+      const {data}=await axios.post(`https://chatapp-loh5.onrender.com/api/chat/group`,{
         name:groupChatName,
         users:`${JSON.stringify(selectedUsers.map((u)=>u._id))}`,
       },config)

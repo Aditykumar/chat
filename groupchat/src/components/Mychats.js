@@ -21,7 +21,7 @@ const Mychats = ({fetchAgain}) => {
         },
       };
 
-      const { data } = await axios.get(`/api/chat`, config);
+      const { data } = await axios.get(`https://chatapp-loh5.onrender.com/api/chat`, config);
       setChats(data);
     } catch (error) {
       toast({

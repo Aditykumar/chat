@@ -2,7 +2,6 @@
   "name": "groupchat",
   "version": "0.1.0",
   "private": true,
-   "proxy": "https://chatapp-loh5.onrender.com",
   "dependencies": {
     "@chakra-ui/icon": "^3.0.16",
     "@chakra-ui/icons": "^2.0.18",
