@@ -19,6 +19,7 @@ import io from "socket.io-client";
 import Lottie from "react-lottie";
 import animationData from "../animation/loading.json";
 const ENDPOINT = "https://chatapp-loh5.onrender.com";
+// const ENDPOINT = "http://localhost:5000";
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {

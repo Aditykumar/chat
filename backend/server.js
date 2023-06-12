@@ -8,6 +8,7 @@ const userRoutes = require("./routes/userRoutes.js");
 const chatRoutes = require("./routes/chatRoutes.js");
 const messageRoutes = require("./routes/messageRoutes.js");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
+
 const cors = require('cors'); 
 const app = express();
 dotenv.config();
@@ -43,13 +44,17 @@ app.use(errorHandler);
 const PORT = process.env.PORT || 5000;
 
 const server = app.listen(PORT, console.log(`server started`.yellow.bold));
-const io = require("socket.io")(server, {
+var http = require('http').Server(server)
+const io = require("socket.io")(http, {
   pingTimeout: 60000,
   cors: {
+    // origin: "http://localhost:3000",
     origin: "https://chat-frontend-9vty.onrender.com/",
+
   },
 });
 
+console.log(io,"server")
 
 io.on("connection", (socket) => {
   socket.on("setup", (userData) => {
