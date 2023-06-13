@@ -6,6 +6,8 @@ import { AddIcon } from "@chakra-ui/icons";
 import ChatLoading from "./ChatLoading";
 import { getSender } from "../config/ChatLogic";
 import GroupChatModal from "./commonComponent/GroupChatModal";
+import {BASE_URL} from "../urls/url"
+
 const Mychats = ({fetchAgain}) => {
   const [loggedUser, setLoggedUser] = useState();
 
@@ -21,7 +23,7 @@ const Mychats = ({fetchAgain}) => {
         },
       };
 
-      const { data } = await axios.get("https://chatapp-loh5.onrender.com/api/chat", config);
+      const { data } = await axios.get(`${BASE_URL}/api/chat`, config);
       setChats(data);
     } catch (error) {
       toast({

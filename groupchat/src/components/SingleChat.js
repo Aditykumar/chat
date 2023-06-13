@@ -18,8 +18,9 @@ import ScrollableChat from "./ScrollableChat";
 import io from "socket.io-client";
 import Lottie from "react-lottie";
 import animationData from "../animation/loading.json";
-const ENDPOINT = "https://chatapp-loh5.onrender.com";
-// const ENDPOINT = "http://localhost:5000";
+import {BASE_URL} from "../urls/url"
+const ENDPOINT = BASE_URL;
+
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
@@ -53,7 +54,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       };
       setLoading(true);
       const { data } = await axios.get(
-        `https://chatapp-loh5.onrender.com/api/message/${selectedChat._id}`,
+        `${BASE_URL}/${selectedChat._id}`,
         config
       );
       setMessages(data);
@@ -87,7 +88,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         };
 
         const { data } = await axios.post(
-          `https://chatapp-loh5.onrender.com/api/message`,
+          `${BASE_URL}`,
           {
             content: newMessage,
             chatId: selectedChat._id,
@@ -114,7 +115,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   };
 
   useEffect(() => {
-    socket = io(ENDPOINT);
+    socket = io(BASE_URL);
     socket.emit("setup", user);
     socket.on("connected", () => setSockectConnected(true));
     socket.on("typing", () => setIsTyping(true));

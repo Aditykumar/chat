@@ -18,6 +18,8 @@ import { ChatState } from "../../context/ChatProvider";
 import axios from "axios";
 import UserListItem from "../UserAvatar/UserListItem";
 import UserBadgeItem from "../UserAvatar/UserBadgeItem";
+import {BASE_URL} from "../../urls/url"
+
 const GroupChatModal = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [groupChatName, setGroupChatName] = useState();
@@ -40,7 +42,7 @@ const GroupChatModal = ({ children }) => {
         },
       };
 
-      const { data } = await axios.get(`https://chatapp-loh5.onrender.com/api/user?search=${search}`, config);
+      const { data } = await axios.get(`${BASE_URL}/api/user?search=${search}`, config);
       setLoading(false);
       setSearchResult(data);
     } catch (error) {
@@ -71,7 +73,7 @@ try {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const {data}=await axios.post(`https://chatapp-loh5.onrender.com/api/chat/group`,{
+      const {data}=await axios.post(`${BASE_URL}/api/chat/group`,{
         name:groupChatName,
         users:`${JSON.stringify(selectedUsers.map((u)=>u._id))}`,
       },config)

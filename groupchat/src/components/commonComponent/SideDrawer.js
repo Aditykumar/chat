@@ -30,6 +30,8 @@ import axios from "axios";
 import ChatLoading from "../ChatLoading";
 import UserListItem from "../UserAvatar/UserListItem";
 import { getSender } from "../../config/ChatLogic";
+import {BASE_URL} from "../../urls/url"
+
 const SideDrawer = () => {
   const [search, setSearch] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
@@ -59,7 +61,7 @@ const handelSearch=async()=>{
                 Authorization:`Bearer ${user.token}`,
             },
         };
-        const {data}=await axios.get(`https://chatapp-loh5.onrender.com/api/user?search=${search}`,config);
+        const {data}=await axios.get(`${BASE_URL}/api/user?search=${search}`,config);
         setLoading(false)
         setSearchResult(data)
     } catch (error) {
@@ -85,7 +87,7 @@ const accessChat=async (userId)=>{
             },
         };
 
-        const {data}=await axios.post(`https://chatapp-loh5.onrender.com/api/chat`,{userId},config);
+        const {data}=await axios.post(`${BASE_URL}/api/chat`,{userId},config);
        
        if (!chats.find((c)=>c._id===data._id)) setChats([data,...chats])
         setSelectedChat(data)

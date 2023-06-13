@@ -11,6 +11,8 @@ import {
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {BASE_URL} from "../../urls/url"
+
 const Signup = () => {
   const [show, setShow] = useState(false);
   const [name, setName] = useState();
@@ -106,7 +108,7 @@ const Signup = () => {
         },
       };
       const { data } = await axios.post(
-        `https://chatapp-loh5.onrender.com/api/user`,
+        `${BASE_URL}/api/user`,
         { name, email, password, pic },
         config
       );

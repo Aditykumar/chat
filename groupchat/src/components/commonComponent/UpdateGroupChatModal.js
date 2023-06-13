@@ -21,6 +21,8 @@ import { ChatState } from "../../context/ChatProvider";
 import UserBadgeItem from "../UserAvatar/UserBadgeItem";
 import axios from "axios";
 import UserListItem from "../UserAvatar/UserListItem";
+import {BASE_URL} from "../../urls/url"
+
 const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain ,fetchMessage}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { selectedChat, setSelectedChat, user } = ChatState();
@@ -50,7 +52,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain ,fetchMessage}) => {
         },
       };
       const { data } = await axios.put(
-        `https://chatapp-loh5.onrender.com/api/chat/groupremove`,
+        `${BASE_URL}/api/chat/groupremove`,
         {
           chatId: selectedChat._id,
           userId: user1._id,
@@ -102,7 +104,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain ,fetchMessage}) => {
         },
       };
       const { data } = await axios.put(
-        `https://chatapp-loh5.onrender.com/api/chat/groupadd`,
+        `${BASE_URL}/api/chat/groupadd`,
         {
           chatId: selectedChat._id,
           userId: user1._id,
@@ -135,7 +137,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain ,fetchMessage}) => {
         },
       };
       const { data } = await axios.put(
-        `https://chatapp-loh5.onrender.com/api/chat/rename`,
+        `${BASE_URL}/api/chat/rename`,
         {
           chatId: selectedChat._id,
           chatName: groupChatName,
@@ -171,7 +173,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain ,fetchMessage}) => {
         },
       };
 
-      const { data } = await axios.get(`https://chatapp-loh5.onrender.com/api/user?search=${search}`, config);
+      const { data } = await axios.get(`${BASE_URL}/api/user?search=${search}`, config);
       console.log(data);
       setLoading(false);
       setSearchResult(data);
