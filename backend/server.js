@@ -42,16 +42,13 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
-const server = app.listen(
-  PORT,
-  console.log(`Server running on PORT ${PORT}...`.yellow.bold)
-);
-const http = require("http").createServer(server);
-const io = require("socket.io")(http, {
+
+const httpServer = require("http").createServer(app);
+const io = require("socket.io")(httpServer, {
   // pingTimeout: 60000,
   cors: {
     origin:
-      "https://chat-frontend-9vty.onrender.com" /*local url:-  "http://localhost:3000*/,
+      process.env.CLIENT_URL|| "http://localhost:3000",
     // credentials: true,
   },
 });
@@ -87,3 +84,7 @@ io.on("connection", (socket) => {
     socket.leave(userData._id);
   });
 });
+httpServer.listen(
+  PORT,
+  console.log(`Server running on PORT ${PORT}...`.yellow.bold)
+);
