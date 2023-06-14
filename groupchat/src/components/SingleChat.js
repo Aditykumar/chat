@@ -19,7 +19,7 @@ import io from "socket.io-client";
 import Lottie from "react-lottie";
 import animationData from "../animation/loading.json";
 import {BASE_URL} from "../urls/url"
-const ENDPOINT = BASE_URL;
+// const ENDPOINT = BASE_URL;
 
 var socket, selectedChatCompare;
 

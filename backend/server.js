@@ -48,11 +48,11 @@ const server = app.listen(
 );
 const http = require("http").createServer(server);
 const io = require("socket.io")(http, {
-  pingTimeout: 60000,
+  // pingTimeout: 60000,
   cors: {
     origin:
       "https://chat-frontend-9vty.onrender.com" /*local url:-  "http://localhost:3000*/,
-    credentials: true,
+    // credentials: true,
   },
 });
 io.on("connection", (socket) => {
