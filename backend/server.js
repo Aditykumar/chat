@@ -47,9 +47,11 @@ const httpServer = require("http").createServer(app);
 const io = require("socket.io")(httpServer, {
   // pingTimeout: 60000,
   cors: {
-    origin:
-      process.env.CLIENT_URL|| "http://localhost:3000",
-    // credentials: true,
+    origin:'*',
+    credentials: true,
+    methods:['GET', 'PUT', 'POST'],
+    allowedHeaders:['Content-Type', 'Authorization'],
+
   },
 });
 io.on("connection", (socket) => {
