@@ -48,8 +48,9 @@ const io = require("socket.io")(httpServer, {
   // pingTimeout: 60000,
   cors: {
     origin:
-      process.env.CLIENT_URL|| "http://localhost:3000",
+      process.env.CLIENT_URL,
     // credentials: true,
+    methods:["Get","Post","Put","Patch","Delete"]
   },
 });
 io.on("connection", (socket) => {
